@@ -1,12 +1,12 @@
-public class Hogwarts {
+public abstract class Hogwarts {
+    private int magicPower;
+    private int transgressionLength;
     private String name;
-    private int magic;
-    private int transgression;
 
-    public Hogwarts(String name, int magic, int transgression) {
+    public Hogwarts(String name, int magicPower, int transgressionLength) {
         this.name = name;
-        this.magic = magic;
-        this.transgression = transgression;
+        this.magicPower = magicPower;
+        this.transgressionLength = transgressionLength;
     }
 
     public String getName() {
@@ -17,28 +17,55 @@ public class Hogwarts {
         this.name = name;
     }
 
-    public int getMagic() {
-        return magic;
+    public int getMagicPower() {
+        return magicPower;
     }
 
-    public void setMagic(int magic) {
-        this.magic = magic;
+    public int getTransgressionLength() {
+        return transgressionLength;
     }
 
-    public int getTransgression() {
-        return transgression;
+    public void setMagicPower(int magicPower) {
+        this.magicPower = magicPower;
     }
 
-    public void setTransgression(int transgression) {
-        this.transgression = transgression;
+    public void setTransgressionLength(int transgressionLength) {
+        this.transgressionLength = transgressionLength;
     }
 
-private int ability() {
-        return magic + transgression;
+    private int ability() {
+        return magicPower + transgressionLength;
+    }
+
+    public void compareHogwarts(Hogwarts Hogwarts) {
+        int ability1 = ability();
+        int ability2 = Hogwarts.ability();
+        if (ability1 > ability2) {
+            System.out.printf("Студент %s лучше, чем студент %s: %d VS %d%n",
+                    getName(), Hogwarts.getName(), ability1, ability2);
+        } else if (ability2 > ability1) {
+            System.out.printf("Студент %s лучше, чем студент %s: %d VS %d%n",
+                    Hogwarts.getName(),
+                    getName(),
+                    ability2,
+                    ability1);
+        } else {
+            System.out.printf("Студент %s такой же, как студент %s: %d VS %d%n",
+                    Hogwarts.getName(),
+                    getName(),
+                    ability1,
+                    ability2);
+
+        }
+    }
+
+public void print(){
+    System.out.println(this);
 }
- public  void compareHogwarts(Hogwarts hogwarts) {
-        int
 
- }
-   }
-
+    @Override
+    public String toString() {
+        return String.format("Студент %s; сила магии: %d; сила трансгрессии: %d",
+                name, magicPower, transgressionLength);
+    }
+}
